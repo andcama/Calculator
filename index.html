@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Calculadora</title>
+</head>
+<body ng-app="calculadora" ng-controller="CalculadoraTest">
+    <h1>Calculadora</h1>
+    <div class="contenedor">
+        <div class="contenedor-resultado">
+            {{primerValor || 0 }}
+            <span ng-if="operadorActual">{{operadorActual}}</span>
+            <span ng-if="segundoValor">{{ segundoValor }}</span>
+            <span ng-if="resultadoOperacion" class="elemento-resultado"> = {{ resultadoOperacion }}</span>
+            <button class="cerrar-btn" ng-click="limpiarNumeros()">X</button>
+        </div>
+        <div class="botones-contenedor">
+            <div class="numeros-contenedor">
+                <div class="numeros-contenedor-in" ng-repeat="num in arrayNumeros">
+                    <button class="lista-numero" ng-click="MostrarNumero(num)">{{ num }}</button>
+                    <button class="lista-numero" ng-if="$index == 9" ng-click="MostrarNumero('.')"> . </button>
+                </div>
+            </div>
+            <div class="operador-contenedor">
+                <button class="operador-valor" ng-repeat="opr in valores" ng-click="Operador(opr)">{{ opr }}</button>
+            </div>
+        </div>
+        <button class="resultado-boton" ng-click="resultado()">=</button>
+    </div>
+</body>
+</html>
